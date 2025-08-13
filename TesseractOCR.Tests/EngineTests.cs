@@ -169,7 +169,7 @@ namespace Tesseract.Tests
         public void CanParseUznFile()
         {
             using var engine = CreateEngine();
-            var inputFilename = TestFilePath(@"Ocr\uzn-test.png");
+            var inputFilename = TestFilePath("Ocr/uzn-test.png");
             using var img = TesseractOCR.Pix.Image.LoadFromFile(inputFilename);
             using var page = engine.Process(img, PageSegMode.AutoOnly);
             var text = page.Text;
@@ -232,7 +232,7 @@ namespace Tesseract.Tests
         {
             var result = new StringBuilder();
             using var engine = CreateEngine();
-            using var img = LoadTestPix("ocr/empty.png");
+            using var img = LoadTestPix("Ocr/empty.png");
             using var page = engine.Process(img);
 
             foreach (var block in page.Layout)
@@ -271,17 +271,17 @@ namespace Tesseract.Tests
 
             }
 
-            Assert.AreEqual(result.ToString(), "Block text: \r\n" +
-                                               "Block confidence: 0\r\n" +
-                                               "Paragraph text: \r\n" +
-                                               "Paragraph confidence: 0\r\n" +
-                                               "Text line text: \r\n" +
-                                               "Text line confidence: 0\r\n" +
-                                               "Word text: \r\n" +
-                                               "Word confidence: 0\r\n" +
-                                               "Word is from dictionary: False\r\n" +
-                                               "Word is numeric: False\r\n" +
-                                               "Word language: Unknown\r\n");
+            Assert.AreEqual(result.ToString(), "Block text: \n" +
+                                               "Block confidence: 0\n" +
+                                               "Paragraph text: \n" +
+                                               "Paragraph confidence: 0\n" +
+                                               "Text line text: \n" +
+                                               "Text line confidence: 0\n" +
+                                               "Word text: \n" +
+                                               "Word confidence: 0\n" +
+                                               "Word is from dictionary: False\n" +
+                                               "Word is numeric: False\n" +
+                                               "Word language: Unknown\n");
         }
 
         [TestMethod]
@@ -311,7 +311,7 @@ namespace Tesseract.Tests
         [TestMethod]
         public void CanProcessPixUsingResultIterator()
         {
-            const string resultPath = @"EngineTests\CanProcessPixUsingResultIterator.txt";
+            const string resultPath = "EngineTests/CanProcessPixUsingResultIterator.txt";
             var result = new StringBuilder();
 
             using var engine = CreateEngine();
@@ -743,7 +743,7 @@ namespace Tesseract.Tests
         [TestMethod]
         public void CanPrintVariables()
         {
-            const string resultFilename = @"EngineTests\CanPrintVariables.txt";
+            const string resultFilename = "EngineTests/CanPrintVariables.txt";
 
             using var engine = CreateEngine();
             var actualResultsFilename = TestResultRunFile(resultFilename);
