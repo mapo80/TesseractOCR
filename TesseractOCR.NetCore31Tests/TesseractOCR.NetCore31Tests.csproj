@@ -171,6 +171,9 @@
     <None Include="..\TesseractOCR.Tests\tessdata\Configs\bazzar" Link="tessdata\Configs\bazzar">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="..\TesseractOCR.Tests\tessdata\configs\bazzar" Link="tessdata\configs\bazzar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\TesseractOCR.Tests\tessdata\eng.traineddata" Link="tessdata\eng.traineddata">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

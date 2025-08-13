@@ -8,12 +8,12 @@ namespace Tesseract.Tests.Leptonica.PixTests
     [TestClass]
     public class ImageManipulationTests : TesseractTestBase
     {
-        private const string ResultsDirectory = @"Results\ImageManipulation\";
+        private const string ResultsDirectory = "Results/ImageManipulation/";
 
         [TestMethod]
         public void DescewTest()
         {
-            var sourcePixPath = TestFilePath(@"Scew\scewed-phototest.png");
+            var sourcePixPath = TestFilePath("Scew/scewed-phototest.png");
             using var sourcePix = TesseractOCR.Pix.Image.LoadFromFile(sourcePixPath);
             using var descewedImage = sourcePix.Deskew(new ScewSweep(range: 45), TesseractOCR.Pix.Image.DefaultBinarySearchReduction, TesseractOCR.Pix.Image.DefaultBinaryThreshold, out var scew);
             Assert.AreEqual(scew.Angle, -9.953125F, 0.00001);
@@ -26,7 +26,7 @@ namespace Tesseract.Tests.Leptonica.PixTests
         [TestMethod]
         public void OtsuBinarizationTest()
         {
-            var sourcePixFilename = TestFilePath(@"Binarization\neo-8bit.png");
+            var sourcePixFilename = TestFilePath("Binarization/neo-8bit.png");
             using var sourcePix = TesseractOCR.Pix.Image.LoadFromFile(sourcePixFilename);
             using var binarizedImage = sourcePix.BinarizeOtsuAdaptiveThreshold(200, 200, 10, 10, 0.1F);
             Assert.IsNotNull(binarizedImage);
@@ -36,7 +36,7 @@ namespace Tesseract.Tests.Leptonica.PixTests
         [TestMethod]
         public void SauvolaBinarizationTest()
         {
-            var sourcePixFilename = TestFilePath(@"Binarization\neo-8bit-grayscale.png");
+            var sourcePixFilename = TestFilePath("Binarization/neo-8bit-grayscale.png");
             using var sourcePix = TesseractOCR.Pix.Image.LoadFromFile(sourcePixFilename);
             using var grayscalePix = sourcePix.ConvertRGBToGray(1, 1, 1);
             using var binarizedImage = grayscalePix.BinarizeSauvola(10, 0.35f, false);
@@ -47,7 +47,7 @@ namespace Tesseract.Tests.Leptonica.PixTests
         [TestMethod]
         public void SauvolaTiledBinarizationTest()
         {
-            var sourcePixFilename = TestFilePath(@"Binarization\neo-8bit-grayscale.png");
+            var sourcePixFilename = TestFilePath("Binarization/neo-8bit-grayscale.png");
             using var sourcePix = TesseractOCR.Pix.Image.LoadFromFile(sourcePixFilename);
             using var grayscalePix = sourcePix.ConvertRGBToGray(1, 1, 1);
             using var binarizedImage = grayscalePix.BinarizeSauvolaTiled(10, 0.35f, 2, 2);
@@ -86,7 +86,7 @@ namespace Tesseract.Tests.Leptonica.PixTests
         [TestMethod]
         public void RemoveLinesTest()
         {
-            var sourcePixFilename = TestFilePath(@"processing\table.png");
+            var sourcePixFilename = TestFilePath("processing/table.png");
             using var sourcePix = TesseractOCR.Pix.Image.LoadFromFile(sourcePixFilename);
             using var result = sourcePix.RemoveLines();
             using var result1 = result.Rotate90(RotationDirection.Clockwise);
@@ -98,7 +98,7 @@ namespace Tesseract.Tests.Leptonica.PixTests
         [TestMethod]
         public void DespeckleTest()
         {
-            var sourcePixFilename = TestFilePath(@"processing\w91frag.jpg");
+            var sourcePixFilename = TestFilePath("processing/w91frag.jpg");
             using var sourcePix = TesseractOCR.Pix.Image.LoadFromFile(sourcePixFilename);
             using var result = sourcePix.Despeckle(TesseractOCR.Pix.Image.SEL_STR2, 2);
             SaveResult(result, "w91frag-despeckled.png");
